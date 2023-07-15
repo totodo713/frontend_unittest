@@ -1,0 +1,16 @@
+version: '3'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OUTER_GROUP: '${OUTER_GROUP}'
+        OUTER_USER: '${OUTER_USER}'
+    environment:
+      OUTER_USER: '${OUTER_USER}'
+    tty: true
+    volumes:
+      - '.:/workspace'
+    command: bash -l
+
